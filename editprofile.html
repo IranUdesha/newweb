@@ -93,18 +93,60 @@
       
     </header>
     
-    <div class="container">
-      <div class="row">
-        <div class="content">
-          <h2>Home</h2>
+ <!-- Edit Profile -->
+ <div class="container ">
+    <div class="row justify-content-center ">
+      <div class=" col-sm-6 col-md-8">
+        <div class="conbox" >
+          <label class="lbl1">Edit Profile</label>
+          <form>
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="validationDefault01">First name</label>
+                <input type="text" class="form-control" id="validationDefault01"  required>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="validationDefault02">Last name</label>
+                <input type="text" class="form-control" id="validationDefault02"  required>
+              </div>
+              
+            </div>
+            <div class="row">
+              <div class="col-md-12 mb-3">
+                <label for="validationDefaultUsername">Username</label>
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroupPrepend2">@</span>
+                  </div>
+                  <input type="text" class="form-control" id="validationDefaultUsername"  aria-describedby="inputGroupPrepend2" required>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="form-group col-md-12">
+                <label for="inputPassword4">Password</label>
+                <input type="password" class="form-control" id="inputPassword4">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="col-md-8 mb-6">
+                <label for="validationDefault03">E-mail</label>
+                <input type="email" class="form-control" id="validationDefault03" required>
+              </div>
+                        
+            </div>         
+            <button class="btn btn-primary " style="margin-top: 10px;" type="submit">Update</button>
+          </form>
         </div>
-      </div>
-    </div>
-  
        
-     
-    
+      </div>
+    </div>    
+  </div>
 
+     
+
+
+    
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
