@@ -15,7 +15,7 @@
     <link href="css/main.css" rel="stylesheet">
     
     
-    <title>Home</title>
+    <title>Add Items</title>
   </head>
   <body>
     <!-- Navigation bar & Headder -->
@@ -59,9 +59,7 @@
                     <span data-feather="bar-chart-2"></span>
                     Add Categary 
                   </a>
-                </li>
-               
-              
+                </li>             
               </ul>
   
               <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
@@ -82,71 +80,76 @@
                     <span data-feather="file"></span>
                     Edit Profile
                   </a>
-                </li>
-                
+                </li>                
               </ul>
             </div>
-          </nav>
-  
+          </nav>  
         </div>
-      </div>
-      
+      </div>      
     </header>
     
- <!-- Edit Profile -->
- <div class="container ">
-    <div class="row justify-content-center ">
-      <div class=" col-sm-6 col-md-8">
-        <div class="conbox" >
-          <label class="lbl1">Edit Profile</label>
-          <form>
-            <div class="row">
-              <div class="col-md-6 mb-3">
-                <label for="validationDefault01">First name</label>
-                <input type="text" class="form-control" id="validationDefault01"  required>
-              </div>
-              <div class="col-md-6 mb-3">
-                <label for="validationDefault02">Last name</label>
-                <input type="text" class="form-control" id="validationDefault02"  required>
-              </div>
-              
-            </div>
-            <div class="row">
-              <div class="col-md-12 mb-3">
-                <label for="validationDefaultUsername">Username</label>
-                <div class="input-group">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text" id="inputGroupPrepend2">@</span>
-                  </div>
-                  <input type="text" class="form-control" id="validationDefaultUsername"  aria-describedby="inputGroupPrepend2" required>
+    <!-- User Registration Form -->
+    <div class="container bg " style="width: 80%;">
+      <div class="row justify-content-center ">
+        <div class=" col-sm-6 col-md-8">
+          <div class="conbox" >
+            <label class="lbl1">Add Items</label>
+            <form>
+              <div class="form-row">
+                <div class="col-md-3 mb-3">
+                    <div class="form-group ">
+                        <label for="inputState">Category</label>
+                        <select id="inputState" class="form-control" required>
+                          <option selected>Choose...</option>
+                          <option>Cigarettes</option>
+                          <option>Liquor</option>
+                        </select>
+                    </div>
                 </div>
+                <div class="col-md-3 mb-3">                    
+                        <div class="input-group-prepend">
+                            <label for="inputState">Amount</label>                          
+                        </div>
+                        <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)" required>                                             
+                </div>
+                <div class="col-md-3 mb-3">
+                    <div class="form-group ">
+                        <label for="inputState">Units</label>
+                        <select id="inputState" class="form-control" required >
+                          <option selected>Choose...</option>
+                          <option>ml</option>
+                          <option>L</option>
+                          <option>Packets</option>
+                          <option>Sticks</option>
+                        </select>
+                    </div>
+                </div> 
+                <div class="col-md-3 mb-3">
+                    <div class="form-group ">
+                        <label for="inputState">Plan for</label>
+                        <select id="inputState" class="form-control" required >
+                          <option selected>Choose...</option>
+                          <option>In Stock</option>
+                          <option>Sale</option>
+                          <option>Destroy</option>                        
+                        </select>
+                    </div>
+                </div>               
               </div>
-            </div>
-            <div class="row">
-              <div class="form-group col-md-12">
-                <label for="inputPassword4">Password</label>
-                <input type="password" class="form-control" id="inputPassword4">
-              </div>
-            </div>
-            <div class="form-row">
-              <div class="col-md-8 mb-6">
-                <label for="validationDefault03">E-mail</label>
-                <input type="email" class="form-control" id="validationDefault03" required>
-              </div>
-                        
-            </div>         
-            <button class="btn btn-primary " style="margin-top: 10px;" type="submit">Update</button>
-          </form>
+            
+                              
+              <button class="btn btn-primary " style="margin-top: 10px;" type="submit">Add Item</button>
+            </form>
+          </div>
+         
         </div>
+      </div>    
+    </div>
+
        
-      </div>
-    </div>    
-  </div>
-
      
-
-
     
+
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
