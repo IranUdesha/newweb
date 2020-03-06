@@ -109,7 +109,7 @@
                 <div class="row justify-content-center ">
                   <div class=" col-sm-4 col-md-8">
                     <div class="conbox" style="margin: 0px; padding-top: 0px">
-                      <label class="lbl1" style="margin: 0px; padding-top: 0px">~ Available Categaries ~</label>
+                      <label class="lbl1" style="margin: 0px; padding-top: 0px">~ Available Categories ~</label>
                       <label style="font-family: 'Times New Roman', Times, serif; font-weight: bold; " >
                         <?php                              
                             while($row = mysqli_fetch_assoc($CategoriesResult))
@@ -153,12 +153,12 @@
             <div class="row justify-content-center ">
                <div class=" col-sm-6 col-md-8">
                  <div class="conbox" >
-                   <label class="lbl1">~ Add Categary & Units ~</label>
+                   <label class="lbl1">~ Add Category & Units ~</label>
                      
                  <div class="form-row">                   
                    <div class="col-md-6 mb-3">   
                    <form action="addcategoryback.php" method="POST">                 
-                       <label for="inputState" >New Categary</label>  
+                       <label for="inputState" >New Category</label>  
                        <input type="text" class="form-control" name="newcategory" required>  
                        <button class="btn btn-primary " style="margin-top: 10px;" type="submit" name="addcat">Add </button>                                           
                    </form>
@@ -182,13 +182,13 @@
       <div class="row justify-content-center ">
          <div class=" col-sm-6 col-md-8">
            <div class="conbox" >
-             <label class="lbl1">~ Remove Categary ~</label>
+             <label class="lbl1">~ Remove Category ~</label>
                
            <div class="form-row">                   
                 <div class="col-md-6 mb-3">
 
                 <form action="addcategoryback.php" method="POST">                   
-                 <label for="inputState">Categary</label>
+                 <label for="inputState">Category</label>
                         <select id="inputState" name="rcategory" class="form-control" required >
                           <option selected disabled></option>
                           <?php

@@ -1,6 +1,7 @@
 <?php
 
 include'asset/connection.php';
+    // add Category part
     if(isset($_POST['addcat'])){
 
        $ncategory = $_POST['newcategory'];      

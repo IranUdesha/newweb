@@ -18,7 +18,7 @@ session_start();
         // }
 
         if(empty($username)|| empty($password)){
-            header("Location:login.html?error=emptyfields");
+            header("Location:login.php");
             exit();
         }else{
             $sql = "SELECT * FROM login where username = '".$username."' ";
@@ -29,7 +29,7 @@ session_start();
                $hashedpass =  password_verify($password, $row['password']);
                 // echo $hashedpass;
                if($hashedpass == false){
-                     header("Location:login.html");
+                     header("Location:login.php");
 
                }elseif($hashedpass == true){
                     $_SESSION['username'] = $username;

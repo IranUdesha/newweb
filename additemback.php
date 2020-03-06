@@ -2,7 +2,7 @@
 
 include'asset/connection.php';
     if(isset($_POST['additem'])){
-
+        //get input values from front end
        $category = $_POST['category'];
        $brand = $_POST['brand'];
        $quantity = $_POST['quantity'];
@@ -24,12 +24,10 @@ include'asset/connection.php';
         
         return $idEndNumber;
     }
-            $currentYear = date("Y");
+            $currentYear = date("Y");   //get current year
 
-            $SR_ID_Tail = set_SR_ID($conn);
-            $SR_ID = "SR/".$currentYear."/".$SR_ID_Tail;
-
-  echo $SR_ID_Tail;
+            $SR_ID_Tail = set_SR_ID($conn); // get next auto increment value from above function(set_SR_ID())
+            $SR_ID = "SR/".$currentYear."/".$SR_ID_Tail; // SR Number            
                
         $sql = "INSERT INTO item (sr_number,category,brand,quantity,amount,units,status,action,description,date) VALUES(' $SR_ID',' $category','$brand','$quantity',' $amount','$units','$status','$action','$description',CURRENT_TIMESTAMP)";
 
@@ -37,17 +35,17 @@ include'asset/connection.php';
         if($result == 1){
                    
             echo '<script type="text/javascript">';
-            echo ' alert("Item Added Successfully"); window.location.href = "additem.html";';  //showing an alert box.
+            echo ' alert("Item Added Successfully"); window.location.href = "additem.php";';  //showing an alert box and redirect to additem.php
             echo '</script>';
         }else{
             // echo mysqli_error($conn);
             echo '<script type="text/javascript">';
-            echo ' alert("Failed"); window.location.href = "additem.html";';  //showing an alert box.
+            echo ' alert("Failed"); window.location.href = "additem.php";';  //showing an alert box and redirect to additem.php
             echo '</script>';
         }
 
     }else{
-        header("Location:adduser.html");
+        header("Location:additem.php");
         exit();
     }
 

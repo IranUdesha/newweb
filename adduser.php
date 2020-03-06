@@ -43,7 +43,7 @@
                 </li>
                
                 <li class="nav-item">
-                  <a class="nav-link" href="additem.html">
+                  <a class="nav-link" href="additem.php">
                     <span data-feather="shopping-cart"></span>
                     Add Item
                   </a>
@@ -55,7 +55,7 @@
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#">
+                  <a class="nav-link" href="addcategory.php">
                     <span data-feather="bar-chart-2"></span>
                     Add Categary 
                   </a>
