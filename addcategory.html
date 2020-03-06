@@ -1,3 +1,12 @@
+<?php
+    require 'asset/connection.php';
+
+    $selectCategories = " SELECT * FROM `category` ";
+
+    $CategoriesResult = mysqli_query($con,$selectCategories);
+    $selectCategoriesResult1 = mysqli_query($con,$selectCategories);
+    $row = mysqli_fetch_array($CategoriesResult);
+?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -15,7 +24,7 @@
     <link href="css/main.css" rel="stylesheet">
     
     
-    <title>Add Items</title>
+    <title>Categary</title>
   </head>
   <body>
     <!-- Navigation bar & Headder -->
@@ -88,95 +97,99 @@
       </div>      
     </header>
     
-    <!-- Add Item -->
-    <div class="container bg " style="width: 80%;">
-      <div class="row justify-content-center ">
-        <div class=" col-sm-6 col-md-8">
-          <div class="conbox" >
-            <label class="lbl1">Add Items</label>
-            <form action="additemback.php" method="POST">
-              <div class="form-row">
-                <div class="col-md-4 mb-3">
-                    <div class="form-group ">
-                        <label for="inputState">Category</label>
-                        <select id="inputState" name="category" class="form-control" required>
-                          <option selected>Choose...</option>
-                          <option>Cigarettes</option>
-                          <option>Liquor</option>
-                        </select>
+    <div class="">
+        <!-- Show available Categories -->
+        <div class="row">
+            <div class="container bg " style="width: 50%;">
+                <div class="row justify-content-center ">
+                  <div class=" col-sm-6 col-md-8">
+                    <div class="conbox" >
+                      <label class="lbl1">Available Categaries</label>
+                      <label name="categaries">
+                        <?php 
+                        $num = 0;
+                        while()
+                        {
+                            $category = $row['category'];
+                            if($num==0)
+                            {
+    
+                            }
+                            else
+                            {
+                                echo " , ";
+                                if($num ==10 )
+                                {
+                                    echo "<br>";
+                                }
+                            }
+                            $num = $num+1;
+                            echo $category;
+                        }
+                        ?>
+                      </label>
+                      
                     </div>
-                </div>  
-                <div class="col-md-4 mb-3">                    
-                    <label for="inputState" >Brand</label>  
-                    <input type="text" class="form-control" name="brand"  required>                                             
-                </div>
-
-
-
-
+                   
+                  </div>
+                </div>    
               </div>
-          <div class="form-row">
-                <div class="col-md-3 mb-3">                    
-                  <div class="input-group-prepend">
-                      <label for="inputState">Quantity</label>                          
-                  </div>
-                     <input type="text" class="form-control" name="quantity" aria-label="Amount (to the nearest dollar)" required>                                             
-                </div>
-                <div class="col-md-3 mb-3">                    
-                  <div class="input-group-prepend">
-                      <label for="inputState">Amount</label>                          
-                  </div>
-                     <input type="text" class="form-control" name="amount" aria-label="Amount (to the nearest dollar)" required>                                             
-                </div>
-            <div class="col-md-3 mb-3">
-              <div class="form-group ">
-                  <label for="inputState">Units</label>
-                  <select id="inputState" name="units" class="form-control" required >
-                    <option selected>Choose...</option>
-                    <option>ml</option>
-                    <option>L</option>
-                    <option>Packets</option>
-                    <option>Sticks</option>
-                  </select>
-              </div>
-            </div>          
-            <div class="col-md-3 mb-3">
-                  <div class="form-group ">
-                      <label for="inputState">Status</label>
-                      <select id="inputState" name="status" class="form-control" required >
-                        <option selected></option>
-                        <option>Used</option>
-                        <option>Brand New</option>                                              
-                      </select>
-                  </div>
-            </div> 
-          </div>
-          <div class="form-row">
-            <div class="col-md-3 mb-3">
-                <div class="form-group ">
-                    <label for="inputState">Action</label>
-                    <select id="inputState" name="action" class="form-control" required >
-                      <option selected></option>
-                      <option>Stock</option>
-                      <option>Sale</option>   
-                      <option>Destroy</option>                                             
-                    </select>
-                </div>
-            </div> 
-            <!--Material textarea-->
-            <div class="col-md-6 mb-3">
-              <label for="description">Description</label>
-              <textarea class="form-control z-depth-1" name="description" id="description" rows="3" cols="50" placeholder="Description..."></textarea>
-            </div>
-         </div>
-            <button class="btn btn-primary " style="margin-top: 10px;" type="submit" name="additem">Add Item</button>
-            </form>
-          </div>
-         
         </div>
-      </div>    
+       
+     <div class="row">
+              <!-- Add Category -->
+        <div class="container bg " style="width: 50%; position: relative; top: 230px; ">
+            <div class="row justify-content-center ">
+               <div class=" col-sm-6 col-md-8">
+                 <div class="conbox" >
+                   <label class="lbl1">Add Categary</label>
+                     <form action="additemback.php" method="POST">
+                 <div class="form-row">                   
+                   <div class="col-md-5 mb-3">                    
+                       <label for="inputState" >New Categary</label>  
+                       <input type="text" class="form-control" name="brand"  required>                                             
+                   </div>
+                   <div class="col-md-5 mb-3">                    
+                       <label for="inputState" >New Unit</label>  
+                       <input type="text" class="form-control" name="brand"  required>                                             
+                   </div>
+                 </div>             
+                     <button class="btn btn-primary " style="margin-top: 10px;" type="submit" name="additem">Add Category</button>
+                     </form>
+                 </div>           
+              </div>
+             </div>    
+        </div>
+     </div>
+     <div class="row">
+        <!-- Remove Category -->
+  <div class="container bg " style="width: 50%; position: relative; top: 500px; ">
+      <div class="row justify-content-center ">
+         <div class=" col-sm-6 col-md-8">
+           <div class="conbox" >
+             <label class="lbl1">Remove Categary</label>
+               <form action="additemback.php" method="POST">
+           <div class="form-row">                   
+             <div class="col-md-5 mb-3">                    
+                 <label for="inputState" >New Categary</label>  
+                 <input type="text" class="form-control" name="brand"  required>                                             
+             </div>
+             <div class="col-md-5 mb-3">                    
+                 <label for="inputState" >New Unit</label>  
+                 <input type="text" class="form-control" name="brand"  required>                                             
+             </div>
+           </div>             
+               <button class="btn btn-primary " style="margin-top: 10px;" type="submit" name="additem">Add Category</button>
+               </form>
+           </div>           
+        </div>
+       </div>    
+  </div>
+</div>
+  
     </div>
-
+    
+    
        
      
     
