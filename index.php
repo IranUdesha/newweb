@@ -40,8 +40,8 @@
    <?php include 'asset/navbar.html';?>
    
     <div class="main_container"> 
-        <h3>
-          ksjdhkushdgkusdgsd
+        <h3 class="lbl1">
+            Home
         </h3>
     </div>
  

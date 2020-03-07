@@ -1,8 +1,8 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
+      <!-- Required meta tags -->
+      <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
@@ -14,18 +14,22 @@
     <link href="css/util.css" rel="stylesheet">
     <link href="css/main.css" rel="stylesheet">
     
-    
-    <title>Home</title>
+    <script src="js/main.js"></script>
+    <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+	
+    <title>Add User</title>
   </head>
   <body>
      <!-- Navigation bar & Headder -->
      <?php include 'asset/navbar.html';?>
     
-    <!-- User Registration Form -->
-    <div class="container bg ">
-      <div class="row justify-content-center ">
-        <div class=" col-sm-6 col-md-8">
-          <div class="conbox" >
+     <div class="main_container"> 
+         <!-- User Registration Form -->
+    <div class="container">
+      <div class="row ">
+        <div class=" col-sm-6 col-md-7">
+          <div class="" >
             <label class="lbl1">User Registration Form</label>
             <form action="adduserback.php" method="POST" >
               <div class="row">
@@ -78,9 +82,27 @@
         </div>
       </div>    
     </div>
+    </div>
+ 
+   
 
        
-     
+    <script>
+		$(document).ready(function(){
+			$(".siderbar_menu li").click(function(){
+			  $(".siderbar_menu li").removeClass("active");
+			  $(this).addClass("active");
+			});
+
+			$(".hamburger").click(function(){
+			  $(".wrapper").addClass("active");
+			});
+
+			$(".close, .bg_shadow").click(function(){
+			  $(".wrapper").removeClass("active");
+			});
+		});
+	</script>
     
 
     <!-- Optional JavaScript -->

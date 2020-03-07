@@ -28,18 +28,37 @@
     <link href="css/util.css" rel="stylesheet">
     <link href="css/main.css" rel="stylesheet">
     
-    
+    <script src="js/main.js"></script>
+    <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+	<script>
+		$(document).ready(function(){
+			$(".siderbar_menu li").click(function(){
+			  $(".siderbar_menu li").removeClass("active");
+			  $(this).addClass("active");
+			});
+
+			$(".hamburger").click(function(){
+			  $(".wrapper").addClass("active");
+			});
+
+			$(".close, .bg_shadow").click(function(){
+			  $(".wrapper").removeClass("active");
+			});
+		});
+	</script>
     <title>Add Items</title>
   </head>
   <body>
     <!-- Navigation bar & Headder -->
     <?php include 'asset/navbar.html';?>
-    
+<div class="main_container"> 
     <!-- Add Item -->
     <div class="container bg " style="width: 80%;">
       <div class="row justify-content-center ">
         <div class=" col-sm-6 col-md-8">
-          <div class="conbox" >
+          
+          <div class="item" >
             <label class="lbl1">Add Items</label>
             <form action="additemback.php" method="POST">
               <div class="form-row">
@@ -127,7 +146,7 @@
         </div>
       </div>    
     </div>
-
+</div>
        
      
     

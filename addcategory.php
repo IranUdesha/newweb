@@ -15,8 +15,8 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
+     <!-- Required meta tags -->
+     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
@@ -28,7 +28,25 @@
     <link href="css/util.css" rel="stylesheet">
     <link href="css/main.css" rel="stylesheet">
     
-    
+    <script src="js/main.js"></script>
+    <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+	<script>
+		$(document).ready(function(){
+			$(".siderbar_menu li").click(function(){
+			  $(".siderbar_menu li").removeClass("active");
+			  $(this).addClass("active");
+			});
+
+			$(".hamburger").click(function(){
+			  $(".wrapper").addClass("active");
+			});
+
+			$(".close, .bg_shadow").click(function(){
+			  $(".wrapper").removeClass("active");
+			});
+		});
+	</script>
     <title>Categary</title>
   </head>
   <body>
@@ -37,33 +55,27 @@
     
     
         <!-- Show available Categories -->
-        <div class="row" >
-            <div class="container" style="width: 50%; position: relative; top: 0px; margin-bottom:30px " >
-                <div class="row justify-content-center ">
-                  <div class=" col-sm-4 col-md-8">
-                    <div class="conbox" style="margin: 0px; padding-top: 0px">
-                      <label class="lbl1" style="margin: 0px; padding-top: 0px">~ Available Categories ~</label>
-                      <label style="font-family: 'Times New Roman', Times, serif; font-weight: bold; " >
-                        <?php                              
-                            while($row = mysqli_fetch_assoc($CategoriesResult))
-                            {
-                                foreach($row  as $x ){
-                                    echo $x.", "; 
-                                }                      
-                            }                     
-                        ?>
-                      </label>                      
-                    </div>                   
-                  </div>                 
-                </div>    
-              </div>
-        </div>
-      <div class="row">
-        <div class="container"style="width: 50%; position: relative; top: 100px; margin-bottom:30px " >
-                <div class="row justify-content-center ">
-                  <div class=" col-sm-4 col-md-8">
-                    <div class="conbox" style="margin: 0px; padding-top: 0px">
-                      <label class="lbl1" style="margin: 0px; padding-top: 0px">~ Available Units ~</label>
+        <div class="container" style="margin-left: 250px" >            
+           <div class="row">
+                <div class=" col-md-6 col-sm-4" >
+                    <div class="content1" >                       
+                          <label class="lbl1" >~ Available Categories ~</label>
+                          <label style="font-family: 'Times New Roman', Times, serif; font-weight: bold; " >
+                              <?php                              
+                                while($row = mysqli_fetch_assoc($CategoriesResult))
+                                {
+                                    foreach($row  as $x ){
+                                       echo $x.", "; 
+                                    }                      
+                                }                     
+                              ?>
+                          </label>
+                      </div>                   
+                </div> 
+                <div class="col-md-6 col-sm-4">
+                    <div class="content1">
+                      
+                      <label class="lbl1" >~ Available Units ~</label>
                       <label style="font-family: 'Times New Roman', Times, serif; font-weight: bold; " >
                       <?php                              
                             while($row = mysqli_fetch_assoc($selectunitsResult))
@@ -73,88 +85,75 @@
                                 }                      
                             }                     
                         ?>
-                      </label>                      
+                      </label>       
                     </div>                   
-                  </div>                 
-                </div>    
-              </div>
-        </div>
-       
-     <div class="row">
-              <!-- Add Category -->
-        <div class="container bg " style="width: 50%; position: relative; top: 200px; ">
-            <div class="row justify-content-center ">
-               <div class=" col-sm-6 col-md-8">
-                 <div class="conbox" >
-                   <label class="lbl1">~ Add Category & Units ~</label>
-                     
-                 <div class="form-row">                   
-                   <div class="col-md-6 mb-3">   
-                   <form action="addcategoryback.php" method="POST">                 
-                       <label for="inputState" >New Category</label>  
-                       <input type="text" class="form-control" name="newcategory" required>  
-                       <button class="btn btn-primary " style="margin-top: 10px;" type="submit" name="addcat">Add </button>                                           
-                   </form>
-                   </div>
-                   <div class="col-md-6 mb-3">  
-                   <form action="addcategoryback.php" method="POST">                 
-                       <label for="inputState" >New Unit</label>  
-                       <input type="text" class="form-control" name="newunits" required>  
-                       <button class="btn btn-primary " style="margin-top: 10px;" type="submit" name="addunit">Add </button>                                           
-                   </form>
-                   </div>
-                 </div>
+                </div>                  
+          </div>
+          <!-- Add Category -->  
+          <div class="row">                                        
+              <div class=" col col-sm-4 col-md-6">
+                 <div class="content1" >
+                       <label class="lbl1">~ Add Category & Units ~</label>
+                    <div class="form-row">                   
+                       <div class="col-md-6 mb-3">   
+                           <form action="addcategoryback.php" method="POST">                 
+                              <label for="inputState" >New Category</label>  
+                              <input type="text" class="form-control" name="newcategory" required>  
+                              <button class="btn btn-primary " style="margin-top: 10px;" type="submit" name="addcat">Add </button>                                           
+                           </form>
+                       </div>
+                       <div class="col-md-6 mb-3">  
+                          <form action="addcategoryback.php" method="POST">                 
+                              <label for="inputState" >New Unit</label>  
+                              <input type="text" class="form-control" name="newunits" required>  
+                              <button class="btn btn-primary " style="margin-top: 10px;" type="submit" name="addunit">Add </button>                                           
+                          </form>
+                       </div>
+                    </div>
                  </div>           
               </div>
-             </div>    
-        </div>
-     </div>
-     <div class="row">
-        <!-- Remove Category -->
-  <div class="container bg " style="width: 50%; position: relative; top: 470px; ">
-      <div class="row justify-content-center ">
-         <div class=" col-sm-6 col-md-8">
-           <div class="conbox" >
-             <label class="lbl1">~ Remove Category ~</label>
+              <!-- Remove Category -->
+              <div class="col col-sm-4 col-md-6">        
+                 <div class="content1" >
+                      <label class="lbl1">~ Remove Category ~</label>
                
-           <div class="form-row">                   
-                <div class="col-md-6 mb-3">
+                    <div class="form-row">                   
+                       <div class="col-md-6 mb-3">
+                            <form action="addcategoryback.php" method="POST">                   
+                                <label for="inputState">Category</label>
+                                <select id="inputState" name="rcategory" class="form-control" required >
+                                <option selected disabled></option>
+                                <?php
+                                    while ($row = mysqli_fetch_assoc($CategoriesResult2)) {
+                                    echo "<option>" . $row['category'] . "</option>";
+                                     }
+                                    ?>    
+                                </select>
+                                <button class="btn btn-primary " style="margin-top: 10px;" type="submit" name="removecat">Remove </button>
+                             </form>
+                        </div>   
+                        <div class="col-md-6 mb-3"> 
+                            <form action="addcategoryback.php" method="POST">                
+                                <label for="inputState">Units</label>
+                                <select id="inputState" name="runit" class="form-control" required >
+                                <option selected disabled></option>
+                                <?php
+                                    while ($row = mysqli_fetch_assoc($selectunitsResult2)) {
+                                    echo "<option>" . $row['unit'] . "</option>";
+                                    }
+                                ?>                          
+                                </select>
+                                <button class="btn btn-primary " style="margin-top: 10px;" type="submit" name="removeunit">Remove </button>
+                            </form>
+                       </div>                                
+                    </div>             
+                </div>           
+              </div>
+          </div>    
+      </div>
 
-                <form action="addcategoryback.php" method="POST">                   
-                 <label for="inputState">Category</label>
-                        <select id="inputState" name="rcategory" class="form-control" required >
-                          <option selected disabled></option>
-                          <?php
-                            while ($row = mysqli_fetch_assoc($CategoriesResult2)) {
-                              echo "<option>" . $row['category'] . "</option>";
-                          }
-                         ?>    
-                        </select>
-                        <button class="btn btn-primary " style="margin-top: 10px;" type="submit" name="removecat">Remove </button>
-                </form>
-                </div>   
-                <div class="col-md-6 mb-3"> 
 
-                <form action="addcategoryback.php" method="POST">                
-                 <label for="inputState">Units</label>
-                        <select id="inputState" name="runit" class="form-control" required >
-                          <option selected disabled></option>
-                          <?php
-                            while ($row = mysqli_fetch_assoc($selectunitsResult2)) {
-                              echo "<option>" . $row['unit'] . "</option>";
-                          }
-                         ?>                          
-                        </select>
-                        <button class="btn btn-primary " style="margin-top: 10px;" type="submit" name="removeunit">Remove </button>
-                </form>
-                </div>                                
-            </div>             
-               
-           </div>           
-        </div>
-       </div>    
-  </div>
-</div>
+
     
 
     <!-- Optional JavaScript -->
