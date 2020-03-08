@@ -1,14 +1,29 @@
 <?php
     require 'asset/connection.php';
-
     $selectCategories = " SELECT DISTINCT `category` FROM `category`";
     $selectunits = " SELECT DISTINCT `unit` FROM `units`";
 
     $CategoriesResult = mysqli_query($conn,$selectCategories);
     $selectunitsResult = mysqli_query($conn,$selectunits);
 
-    // $CategoriesResult2 = mysqli_query($conn,$selectCategories);
-    // $selectunitsResult2 = mysqli_query($conn,$selectunits);   
+    $u_id = $_GET['itemid'];
+
+    $query = "SELECT * FROM item where item_id='$u_id'";
+    $result = mysqli_query($conn,$query);
+    
+    while($row = mysqli_fetch_array($result)){
+        $sr_number = $row['sr_number'];
+        $category = $row['category'];
+        $sr_number = $row['sr_number'];
+        $brand = $row['brand'];
+        $quantity = $row['quantity'];
+        $amount = $row['amount'];
+        $units = $row['units'];
+        $status = $row['status'];
+        $action = $row['action'];
+        $description = $row['description'];
+
+    }
     
 ?>
 
@@ -31,23 +46,9 @@
     <script src="js/main.js"></script>
     <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-	<script>
-		$(document).ready(function(){
-			$(".siderbar_menu li").click(function(){
-			  $(".siderbar_menu li").removeClass("active");
-			  $(this).addClass("active");
-			});
 
-			$(".hamburger").click(function(){
-			  $(".wrapper").addClass("active");
-			});
 
-			$(".close, .bg_shadow").click(function(){
-			  $(".wrapper").removeClass("active");
-			});
-		});
-	</script>
-    <title>Add Items</title>
+    <title>Update Items</title>
   </head>
   <body>
     <!-- Navigation bar & Headder -->
@@ -59,14 +60,18 @@
         <div class=" col-sm-6 col-md-8">
           
           <div class="item" >
-            <label class="lbl1">Add Items</label>
-            <form action="additemback.php" method="POST">
+            <label class="lbl1">Update Items</label>
+            <form action="updateitemback.php?itemid=<?php echo $u_id ?>" method="POST">
               <div class="form-row">
-                <div class="col-md-6 mb-3">
+              <div class="col-md-4 mb-3">                    
+                    <label for="inputState" >SR Number</label>  
+                    <input type="text" class="form-control" name="srnumber" value="<?php echo $sr_number ?>" required>                                             
+                </div>
+                <div class="col-md-4 mb-3">
                     <div class="form-group ">
                         <label for="inputState">Category</label>
-                        <select id="inputState" name="category" class="form-control" required>
-                          <option disabled selected></option>
+                        <select id="inputState" name="category" class="form-control"  required>
+                          <option ><?php echo $category ?></option>
                           <?php
                             while ($row = mysqli_fetch_assoc($CategoriesResult)) {
                               echo "<option>" . $row['category'] . "</option>";
@@ -75,9 +80,9 @@
                         </select>
                     </div>
                 </div>  
-                <div class="col-md-6 mb-3">                    
+                <div class="col-md-4 mb-3">                    
                     <label for="inputState" >Brand</label>  
-                    <input type="text" class="form-control" name="brand"  required>                                             
+                    <input type="text" class="form-control" name="brand" value="<?php echo $brand ?>" required>                                             
                 </div>
 
 
@@ -89,19 +94,19 @@
                   <div class="input-group-prepend">
                       <label for="inputState">Quantity</label>                          
                   </div>
-                     <input type="text" class="form-control" name="quantity" aria-label="Amount (to the nearest dollar)" required>                                             
+                     <input type="text" class="form-control" name="quantity" aria-label="Amount (to the nearest dollar)" value="<?php echo $quantity ?>" required>                                             
                 </div>
                 <div class="col-md-3 mb-3">                    
                   <div class="input-group-prepend">
                       <label for="inputState">Amount</label>                          
                   </div>
-                     <input type="text" class="form-control" name="amount" aria-label="Amount (to the nearest dollar)" required>                                             
+                     <input type="text" class="form-control" name="amount" aria-label="Amount (to the nearest dollar)" value="<?php echo $amount ?>" required>                                             
                 </div>
             <div class="col-md-3 mb-3">
               <div class="form-group ">
                   <label for="inputState">Units</label>
                   <select id="inputState" name="units" class="form-control" required >
-                    <option disabled selected></option>
+                    <option ><?php echo $units ?></option>
                     <?php
                             while ($row = mysqli_fetch_assoc($selectunitsResult)) {
                               echo "<option>" . $row['unit'] . "</option>";
@@ -114,7 +119,7 @@
                   <div class="form-group ">
                       <label for="inputState">Status</label>
                       <select id="inputState" name="status" class="form-control" required >
-                        <option selected></option>
+                        <option ><?php echo $status ?></option>
                         <option>Used</option>
                         <option>Brand New</option>                                              
                       </select>
@@ -126,7 +131,7 @@
                 <div class="form-group ">
                     <label for="inputState">Action</label>
                     <select id="inputState" name="action" class="form-control" required >
-                      <option selected></option>
+                      <option disabled><?php echo $action ?></option>
                       <option>Stock</option>
                       <option>Sale</option>   
                       <option>Destroy</option>                                             
@@ -136,10 +141,10 @@
             <!--Material textarea-->
             <div class="col-md-9 mb-3">
               <label for="description">Description</label>
-              <textarea class="form-control z-depth-1" name="description" id="description" rows="3" cols="50" placeholder="Description..."></textarea>
+              <textarea class="form-control z-depth-1" name="description" id="description" rows="3" cols="50" placeholder="Description..."><?php echo $description ?></textarea>
             </div>
          </div>
-            <button class="btn btn-primary " style="margin-top: 10px;" type="submit" name="additem">Add Item</button>
+            <button class="btn btn-primary " style="margin-top: 10px;" type="submit" name="additem">Update</button>
             </form>
           </div>
          

@@ -37,7 +37,7 @@ session_start();
                     $_SESSION['email'] = $row['email'];
                     $_SESSION['user_type'] = $row['user_type'];
 
-                    header("Location:index.html ");
+                    header("Location:index.php ");
                     
                }
            }

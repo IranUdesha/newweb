@@ -134,7 +134,7 @@ body{
 }
 
 .sidebar_inner .siderbar_menu > li > a .icon {
-  font-size: 25px;
+  font-size: 0px;
   margin-right: 15px;
 }
 

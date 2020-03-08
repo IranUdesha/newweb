@@ -27,7 +27,7 @@ include'asset/connection.php';
             $currentYear = date("Y");   //get current year
 
             $SR_ID_Tail = set_SR_ID($conn); // get next auto increment value from above function(set_SR_ID())
-            $SR_ID = "SR/".$currentYear."/".$SR_ID_Tail; // SR Number            
+            $SR_ID = "BO/"."SR/".$currentYear."/".$SR_ID_Tail; // SR Number            
                
         $sql = "INSERT INTO item (sr_number,category,brand,quantity,amount,units,status,action,description,date) VALUES(' $SR_ID',' $category','$brand','$quantity',' $amount','$units','$status','$action','$description',CURRENT_TIMESTAMP)";
 

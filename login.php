@@ -3,17 +3,23 @@
 <html lang="en">
 <head>
 	<title>Admin Login</title>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1 shrink-to-fit=no">
+      <!-- Required meta tags -->
+      <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
 
-
-	<link rel="stylesheet" type="text/css" href="css/login.css">
-	<link rel="stylesheet" type="text/css" href="css/main.css">
-	<link rel="stylesheet" type="text/css" href="css/util.css">
-	 <!-- Bootstrap CSS -->
-	 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-
+    <link href="css/dashboard.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/login.css">
+    <link href="css/util.css" type="text/css" rel="stylesheet">
+    <link href="css/main.css" type="text/css" rel="stylesheet">
+    
+    <script src="js/main.js"></script>
+    <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+	
 </head>
 <body>
 	
@@ -21,7 +27,7 @@
 	<div class="limiter ">
 		<div class="container-login100" >
 			<div class="wrap-login100 " style="width:550px; ">
-				<div class="login100-form-title" style="background-image: url(img/conrad-miami.jpg); ">
+				<div class="login100-form-title" style="background-image: url(img/main.jpg); ">
 					<span class="login100-form-title-1">
 						Sign In
 					</span>

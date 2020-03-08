@@ -1,3 +1,11 @@
+<?php
+    require 'asset/connection.php';
+
+   $query = "SELECT * FROM item";
+   $result = mysqli_query($conn,$query);
+
+    
+?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -17,36 +25,88 @@
     <script src="js/main.js"></script>
     <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-	<script>
-		$(document).ready(function(){
-			$(".siderbar_menu li").click(function(){
-			  $(".siderbar_menu li").removeClass("active");
-			  $(this).addClass("active");
-			});
 
-			$(".hamburger").click(function(){
-			  $(".wrapper").addClass("active");
-			});
-
-			$(".close, .bg_shadow").click(function(){
-			  $(".wrapper").removeClass("active");
-			});
-		});
-	</script>
     <title>Home</title>
   </head>
   <body>
     <!-- Navigation bar & Headder -->
    <?php include 'asset/navbar.html';?>
    
-    <div class="main_container"> 
-        <h3 class="lbl1">
-            Home
-        </h3>
-    </div>
- 
+<div class="main_container"> 
+    <div class="card"style="margin-top: 50px">
+  <h3 class="card-header text-center font-weight-bold text-uppercase py-4">Editable table</h3>
+  <div class="card-body">
+  
+      <!-- <span class="table-add float-right mb-3 mr-2"><a href="additem.php" class="text-success">
+        <i  class="fas fa-plus fa-2x" aria-hidden="true"></i></a></span> -->
+
+      <table class="table table-bordered table-responsive-md table-striped text-center">
+        <thead>
+          <tr>
+            <th class="text-center">Item Id</th>
+            <th class="text-center">SR Number</th>
+            <th class="text-center">Category</th>
+            <th class="text-center">Brand</th>
+            <th class="text-center">Quantity</th>
+            <th class="text-center">Amount</th>
+            <th class="text-center">units</th>
+            <th class="text-center">Status</th>
+            <th class="text-center">Action</th>
+            <th class="text-center">Description</th>
+            <th class="text-center">Added Date</th>
+            <th class="text-center">Modefied Date</th>
+            <th class="text-center">Delete</th>
+            <th class="text-center">Update</th>
+          </tr>
+          <?php
+                    while($row = mysqli_fetch_assoc($result))
+                    {
+                        $item_id = $row['item_id'];
+                        $sr_number = $row['sr_number'];
+                        $category = $row['category'];
+                        $brand = $row['brand'];
+                        $quantity = $row['quantity'];
+                        $amount = $row['amount'];
+                        $units = $row['units'];
+                        $status = $row['status'];
+                        $action = $row['action'];
+                        $description = $row['description'];
+                        $date = $row['date'];
+                        $modefied_date = $row['modefied_date'];
+                ?>
+        </thead>
+        <tbody>
+          <tr>
+          <td class="pt-3-half" contenteditable="true"><?php echo  $item_id ?></td>
+            <td class="pt-3-half" contenteditable="true"><?php echo  $sr_number ?></td>
+            <td class="pt-3-half" contenteditable="true"><?php echo  $category ?></td>
+            <td class="pt-3-half" contenteditable="true"><?php echo  $brand ?></td>
+            <td class="pt-3-half" contenteditable="true"><?php echo  $quantity ?></td>
+            <td class="pt-3-half" contenteditable="true"><?php echo  $amount ?></td>
+            <td class="pt-3-half" contenteditable="true"><?php echo  $units ?></td>
+            <td class="pt-3-half" contenteditable="true"><?php echo  $status ?></td>
+            <td class="pt-3-half" contenteditable="true"><?php echo  $action ?></td>
+            <td class="pt-3-half" contenteditable="true"><?php echo  $description ?></td>
+            <td class="pt-3-half" contenteditable="true"><?php echo  $date ?></td>
+            <td class="pt-3-half" contenteditable="true"><?php echo  $modefied_date ?></td>
+            
+            <td>
+              <span class="table-remove">
+                <a class="btn btn-danger btn-rounded btn-sm my-0"  href="deleteitemback.php?itemid=<?php echo $item_id ?>">Remove</a></span>
+            </td>
+            <td>
+              <span class="table-remove">
+                <a type="button" class="btn btn-primary btn-rounded my-0" href="updateitem.php?itemid=<?php echo $item_id ?>">Edit</a></span>
+            </td>
+          </tr>
+           <?php
+                }
+            ?>
+        </tbody>
+      </table>
 
     
+</div>   
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

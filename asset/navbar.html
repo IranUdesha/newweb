@@ -1,5 +1,21 @@
+<script>
+  $(document).ready(function(){
+    $(".siderbar_menu li").click(function(){
+      $(".siderbar_menu li").removeClass("active");
+      $(this).addClass("active");
+    });
+
+    $(".hamburger").click(function(){
+      $(".wrapper").addClass("active");
+    });
+
+    $(".close, .bg_shadow").click(function(){
+      $(".wrapper").removeClass("active");
+    });
+  });
+</script>
 <div class="wrapper">      
-    <div class="sidebar">
+    <div class="sidebar" >
       <div class="bg_shadow"></div>
       <div class="sidebar_inner">
           <div class="close">
@@ -8,14 +24,14 @@
           
           <div class="profile_info">
               <div class="profile_img">
-                <img src="https://i.imgur.com/2QKIaJ5.png" alt="profile_img">
+                <img src="./img/images.png" alt="profile_img" >
               </div>
               <div class="profile_data">
-                  <p class="name">Custom Stock Room</p>
+                  <p class="name">Sri Lanka Customs</p>
                   <span><i class="fas fa-map-marker-alt"></i> Colombo</span>
               </div>
           </div>
-          <label class="lbl3">Dashboard</label>
+          <!-- <label class="lbl3">Dashboard</label> -->
           <ul class="siderbar_menu">
               <li class="active"><a href="index.php">
                 <div class="icon"><i class="fas fa-home"></i></div>
@@ -27,13 +43,7 @@
                 <div class="title">Add Item</div>                  
                 </a>                
             </li>  
-
-            <li><a href="#">
-                <div class="icon"><i class="fas fa-edit"></i></i></div>
-                <div class="title">Update Item </div>
-                </a>              
-            </li>  
-         
+                 
             <li><a href="addcategory.php">
                 <div class="icon"><i class="fas fa-award"></i></div>
                 <div class="title">Category</div>
@@ -44,18 +54,18 @@
               <div class="title">Add User</div>
               </a>
           </li>        
-          <li><a href="#">
+          <li><a href="deleteusers.php">
             <div class="icon"><i class="fas fa-user-times"></i></div>
             <div class="title">Delete User</div>
             </a>
           </li> 
           <li><a href="#">
-            <div class="icon"><i class="fas fa-users-cog"></i></div>
+            <div class="icon" style="margin-bottom:0px ;"><i class="fas fa-users-cog"></i></div>
             <div class="title">Edit Profile</div>
             </a>
         </li>   
           </ul>
-         <div class="logout_btn">
+         <div class="logout_btn"  >
               <a href="#"><i class="fas fa-sign-out-alt"></i>  Logout                   
               </a>  
           </div>
@@ -67,8 +77,8 @@
          <div class="hamburger">
            <i class="fas fa-bars"></i>
          </div>
-         <div class="logo">
-           <a href="#">Logo here</a>
+         <div class="logo"><i class="fa fa-user" aria-hidden="true"></i>
+           <a href="#">username</a>
         </div>
       </div>        
     </div>
