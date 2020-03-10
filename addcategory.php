@@ -115,7 +115,7 @@
               <!-- Remove Category -->
               <div class="col col-sm-4 col-md-6">        
                  <div class="content1" >
-                      <label class="lbl1">~ Remove Category ~</label>
+                      <label class="lbl1">~ Remove Category & Units ~</label>
                
                     <div class="form-row">                   
                        <div class="col-md-6 mb-3">

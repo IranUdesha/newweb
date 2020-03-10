@@ -82,7 +82,7 @@
                 </div>  
                 <div class="col-md-4 mb-3">                    
                     <label for="inputState" >Brand</label>  
-                    <input type="text" class="form-control" name="brand" value="<?php echo $brand ?>" required>                                             
+                    <input type="text" class="form-control" name="brand" value="<?php echo $brand ?>">                                             
                 </div>
 
 
@@ -100,7 +100,7 @@
                   <div class="input-group-prepend">
                       <label for="inputState">Amount</label>                          
                   </div>
-                     <input type="text" class="form-control" name="amount" aria-label="Amount (to the nearest dollar)" value="<?php echo $amount ?>" required>                                             
+                     <input type="text" class="form-control" name="amount" aria-label="Amount (to the nearest dollar)" value="<?php echo $amount ?>">                                             
                 </div>
             <div class="col-md-3 mb-3">
               <div class="form-group ">
@@ -131,7 +131,7 @@
                 <div class="form-group ">
                     <label for="inputState">Action</label>
                     <select id="inputState" name="action" class="form-control" required >
-                      <option disabled><?php echo $action ?></option>
+                      <option><?php echo $action ?></option>
                       <option>Stock</option>
                       <option>Sale</option>   
                       <option>Destroy</option>                                             

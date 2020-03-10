@@ -48,7 +48,7 @@
                   <label for="validationDefaultUsername">Username</label>
                   <div class="input-group">
                     <div class="input-group-prepend">
-                      <span class="input-group-text" id="inputGroupPrepend2">@</span>
+                      <!-- <span class="input-group-text" id="inputGroupPrepend2">@</span> -->
                     </div>
                     <input type="text" class="form-control" id="validationDefaultUsername" name="username" title="Use Simple Letters" aria-describedby="inputGroupPrepend2" required>
                   </div>

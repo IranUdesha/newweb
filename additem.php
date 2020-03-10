@@ -31,22 +31,7 @@
     <script src="js/main.js"></script>
     <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-	<script>
-		$(document).ready(function(){
-			$(".siderbar_menu li").click(function(){
-			  $(".siderbar_menu li").removeClass("active");
-			  $(this).addClass("active");
-			});
 
-			$(".hamburger").click(function(){
-			  $(".wrapper").addClass("active");
-			});
-
-			$(".close, .bg_shadow").click(function(){
-			  $(".wrapper").removeClass("active");
-			});
-		});
-	</script>
     <title>Add Items</title>
   </head>
   <body>
@@ -77,7 +62,7 @@
                 </div>  
                 <div class="col-md-6 mb-3">                    
                     <label for="inputState" >Brand</label>  
-                    <input type="text" class="form-control" name="brand"  required>                                             
+                    <input type="text" class="form-control" name="brand">                                             
                 </div>
 
 
@@ -89,13 +74,13 @@
                   <div class="input-group-prepend">
                       <label for="inputState">Quantity</label>                          
                   </div>
-                     <input type="text" class="form-control" name="quantity" aria-label="Amount (to the nearest dollar)" required>                                             
+                     <input type="number" class="form-control" name="quantity" aria-label="Amount (to the nearest dollar)" required>                                             
                 </div>
                 <div class="col-md-3 mb-3">                    
                   <div class="input-group-prepend">
                       <label for="inputState">Amount</label>                          
                   </div>
-                     <input type="text" class="form-control" name="amount" aria-label="Amount (to the nearest dollar)" required>                                             
+                     <input type="number" class="form-control" name="amount" aria-label="Amount (to the nearest dollar)">                                             
                 </div>
             <div class="col-md-3 mb-3">
               <div class="form-group ">
