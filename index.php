@@ -1,5 +1,4 @@
 <?php
-
     session_start();
 if(!isset($_SESSION['username'])){
   header("Location: login.php");
@@ -25,7 +24,7 @@ if(!isset($_SESSION['username'])){
     <link href="css/dashboard.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/login.css">
     <link href="css/util.css" rel="stylesheet">
-    <link  rel="stylesheet" href="css/main.css">
+    <link  rel="stylesheet" href="css\main.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style> 
     
@@ -35,8 +34,32 @@ if(!isset($_SESSION['username'])){
          /* z-index: 100; */
          background-color: white;
        }
+       @media print {
+      * {
+        display: none;
+       }
+        #printableTable {
+           /* display: block; */
+           border-width: 1px ;
+            border-style: solid important;
+            border-color: black important;
+            font-size: 10px important;
+            background-color: red;
+            padding:0px;
+            -webkit-print-color-adjust:exact ;
+         }
+         
+    }
 
      </style>
+     <script>
+           function printDiv() {
+         window.frames["print_frame"].document.body.innerHTML = document.getElementById("printableTable").innerHTML;
+         window.frames["print_frame"].window.focus();
+         window.frames["print_frame"].window.print();
+       }
+   
+  </script>
   
     
     <!-- <script src="js/main.js"></script> -->
@@ -120,10 +143,16 @@ if(!isset($_SESSION['username'])){
              </div> 
           </div>
           <div class="col">
-            <div >
-                  <input type="submit" name="search" class="btn btn-primary" value="Search" title="Click The button to get the Result">
+            <div class="row" >
+            <div class="col">
+            <input type="submit" name="search" class="btn btn-primary" value="Search" title="Click The button to get the Result">
+            </div>
+          <div class="col">
+          <input type="submit" name="print" class="btn btn-primary" value="print" onclick="printDiv()" title="Click The button to get the Result">
+          </div>
             </div>
           </div>
+          
       </div>
     </form>
    
@@ -148,7 +177,7 @@ if(!isset($_SESSION['username'])){
           
   </div>
     
-    <div class="card-body">
+    <div class="card-body" id="printableTable">
   
       <!-- <span class="table-add float-right mb-3 mr-2"><a href="additem.php" class="text-success">
         <i  class="fas fa-plus fa-2x" aria-hidden="true"></i></a></span> -->
@@ -221,7 +250,9 @@ if(!isset($_SESSION['username'])){
             ?>
         </tbody>
       </table>
+      
     </div>
+    <iframe name="print_frame" width="0" height="0" frameborder="0" src="about:blank"></iframe>
   </div>
 </div>   
 
