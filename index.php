@@ -1,71 +1,12 @@
 <?php
+session_start();
+
     require 'asset/connection.php';
-
-
+    require 'indexback.php';
   //  $query = "SELECT * FROM item";
   //  $result = mysqli_query($conn,$query);
 
-   $selectCategories = " SELECT DISTINCT `category` FROM `category`"; // get category for dropdown menu
-   $CategoriesResult = mysqli_query($conn,$selectCategories);
-
-   if(isset($_POST['search']))
-   {
-       $scategory = $_POST['scategory'];
-       $sstatus = $_POST['sstatus'];
-       $saction = $_POST['saction'];
-       $sfromDate = $_POST['sfromDate'];
-       $stoDate = $_POST['stoDate'];
    
-   
-       if($stoDate == null and $sfromDate == null)
-       {
-           $selectItemData = " SELECT * FROM `item` WHERE  category LIKE '%$scategory%' AND status LIKE '$sstatus%' AND action LIKE '$saction%' ";
-           $selectItemDataResult = mysqli_query($conn,$selectItemData);
-           $CurrentRowCount = mysqli_num_rows($selectItemDataResult);
-   
-           $FullItem = "";
-           $FilterDate = "";
-       }
-       else
-       {
-           if($stoDate == null or $sfromDate == null)
-           {
-               
-               echo '<script type="text/javascript">';
-               echo ' alert("Please fill both From Date and To Date"); window.location.href = "index.php";';  //showing an alert box and redirect to index.php
-               echo '</script>';
-           }
-           else
-           {
-           $selectItemData = " SELECT * FROM `item` WHERE  category LIKE '%$scategory%' AND status LIKE '$sstatus%' AND action LIKE '$saction%' AND date BETWEEN '$sfromDate' AND '$stoDate' ";
-           $selectItemDataResult = mysqli_query($conn,$selectItemData);
-           $CurrentRowCount = mysqli_num_rows($selectItemDataResult);
-   
-           $FilterDate = "/ From : ".$sfromDate." To : ".$stoDate;
-           $FullItem = "";
-           }
-       }
-       
-       
-   
-       if($scategory=="" AND $sstatus=="" AND $saction=="" AND $stoDate == null AND $sfromDate == null)
-       {
-           $FullItem = "Nothing, All items are displayed.";
-           $FilterDate = "";
-       }
-   }
-   else
-   {
-       $selectItemData = " SELECT * FROM `item` ";
-       $selectItemDataResult = mysqli_query($conn,$selectItemData);
-       $CurrentRowCount = mysqli_num_rows($selectItemDataResult);
-       $FullItem = "Nothing, All items are displayed.";
-       $scategory = "";
-       $sstatus = "";
-       $saction = "";
-       $FilterDate = "";
-   }
-
 ?>
 <!doctype html>
 <html lang="en">
@@ -81,25 +22,25 @@
     <link href="css/dashboard.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/login.css">
     <link href="css/util.css" rel="stylesheet">
-    <link href="css/main.css" rel="stylesheet">
+    <link  rel="stylesheet" href="css/main.css">
+    <style> 
     
-    <script src="js/main.js"></script>
+     .table.sticky th{  
+         position: sticky;
+         top: 0;
+         /* z-index: 100; */
+         background-color: white;
+       }
+
+     </style>
+  
+    
+    <!-- <script src="js/main.js"></script> -->
     <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-
-  <style>
-.table.sticky th{
-  
-    position: sticky;
-    top: 0;
-    /* z-index: 100; */
-    background-color: white;
-
-}
-</style>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 
     <title>Home</title>
   </head>
@@ -120,7 +61,7 @@
          <div class="col mb-3">
                     <div class="form-group ">
                         <label for="inputState">Category</label>
-                        <select id="inputState" name="scategory" class="form-control" >
+                        <select id="inputState" name="scategory" class="form-control" title="Select the Category that you want to search">
                           <option selected></option>
                           <?php
                             while ($row = mysqli_fetch_assoc($CategoriesResult)) {
@@ -134,7 +75,7 @@
           
                <div class="form-group ">
                    <label for="inputState">Status</label>
-                      <select id="inputState" name="sstatus" class="form-control" >
+                      <select id="inputState" name="sstatus" class="form-control" title="Select the Status that you want to search">
                          <option selected></option>
                          <option>Used</option>
                          <option>Brand New</option>                                              
@@ -145,7 +86,7 @@
           <div class="col mb-3">
                 <div class="form-group ">
                     <label for="inputState">Action</label>
-                    <select id="inputState" name="saction" class="form-control"  >
+                    <select id="inputState" name="saction" class="form-control" title="Select the Action that you want to search" >
                       <option selected></option>
                       <option>Stock</option>
                       <option>Sale</option>   
@@ -157,43 +98,51 @@
              <div class="row "  >
                 <div class="col">         
                     <label>From Date</label>
-                    <input type="date" name="sfromDate">                                  
+                    <input type="date" name="sfromDate" title="Select the Date that you want to search From">                                  
                 </div>  
                 <div class=" col">
                   <label>To Date</label>
-                  <input type="date" name="stoDate">
+                  <input type="date" name="stoDate" title="Select the Date that you want to search To">
                 </div>  
                 
              </div> 
           </div>
           <div class="col">
             <div >
-                  <input type="submit" name="search" class="btn btn-primary" value="Search">
+                  <input type="submit" name="search" class="btn btn-primary" value="Search" title="Click The button to get the Result">
             </div>
           </div>
       </div>
     </form>
    
           <div>
-              <input class="form-control" id="type" type="text" placeholder="Search..">
+              <input class="form-control" id="type" type="text" placeholder="Search.." title="Enter the Keyword that You want to search">
           </div>                    
   </div>
 
-  <div>
-  <label><b>Sorted By : </b></label><label><?php echo $FullItem." ".$scategory." ".$sstatus." ".$saction." ".$FilterDate?></label>
-            
-            <br>
-            <h6>Item Count in the grid: <?php echo " ".$CurrentRowCount?></h6>
-            <br>
+  <div class="card-header">
+      <div class="row">
+          <div class="col">
+            <!-- Display Sorted method -->
+               <label title="Display the Sorting Type "><b>Sorted By : </b><?php echo $FullItem." ".$scategory." ".$sstatus." ".$saction." ".$FilterDate?></label>
+                 
+          </div>
+           <div class="col">
+             <!-- Display Number of rows of result -->
+           <p style="font-weight: bold" title="Display the Number of Results">Number Of Rows: <span style="color: red"><?php echo " ".$CurrentRowCount?></span></p>             
+            </div>
+           
+       </div>
+          
   </div>
-     <!-- <h6 class="card-header text-center font-weight-bold text-uppercase py-4">Result</h6> -->
+    
     <div class="card-body">
   
       <!-- <span class="table-add float-right mb-3 mr-2"><a href="additem.php" class="text-success">
         <i  class="fas fa-plus fa-2x" aria-hidden="true"></i></a></span> -->
 
-      <table class="table sticky table-bordered table-responsive-md table-striped text-center">
-        <thead class="tbl">
+      <table class="table sticky table-bordered table-responsive-md table-striped text-center"  >
+        <thead >
           <tr >
             <th class="text-center">Item Id</th>
             <th class="text-center">SR Number</th>
@@ -206,11 +155,12 @@
             <th class="text-center">Action</th>
             <th class="text-center">Description</th>
             <th class="text-center">Added Date</th>
-            <th class="text-center">Modefied Date</th>
+            <th class="text-center">Modified Date</th>
             <th class="text-center">Delete</th>
             <th class="text-center">Update</th>
           </tr>
           <?php
+          //fetch data from database
                     while($row = mysqli_fetch_assoc($selectItemDataResult))
                     {
                         $item_id = $row['item_id'];
@@ -224,11 +174,12 @@
                         $action = $row['action'];
                         $description = $row['description'];
                         $date = $row['date'];
-                        $modefied_date = $row['modefied_date'];
+                        $modified_date = $row['modified_date'];
                 ?>
         </thead>
-        <tbody id="datatable">
+        <tbody id="datatable" aria-hidden="true">
           <tr>
+            <!-- assign retrive values to the columns -->
           <td class="pt-3-half" contenteditable="true"><?php echo  $item_id ?></td>
             <td class="pt-3-half" contenteditable="true"><?php echo  $sr_number ?></td>
             <td class="pt-3-half" contenteditable="true"><?php echo  $category ?></td>
@@ -238,9 +189,9 @@
             <td class="pt-3-half" contenteditable="true"><?php echo  $units ?></td>
             <td class="pt-3-half" contenteditable="true"><?php echo  $status ?></td>
             <td class="pt-3-half" contenteditable="true"><?php echo  $action ?></td>
-            <td class="pt-3-half" contenteditable="true"><?php echo  $description ?></td>
+            <td class="pt-3-half" contenteditable="true" style="word-break: break-all; "><?php echo  $description ?></td>
             <td class="pt-3-half" contenteditable="true"><?php echo  $date ?></td>
-            <td class="pt-3-half" contenteditable="true"><?php echo  $modefied_date ?></td>
+            <td class="pt-3-half" contenteditable="true"><?php echo  $modified_date ?></td>
             
             <td>
               <span class="table-remove">
@@ -272,6 +223,8 @@
 //     });
 //   });
 // });
+
+//universal search bar
 $(document).ready(function(){
   $("#type").on("keyup", function()  {
     var value = $(this).val().toLowerCase();
@@ -281,7 +234,27 @@ $(document).ready(function(){
   });
 });
 
-</script> -->
+</script> 
+<script>
+  // selection activation of nav bar
+  $(document).ready(function(){
+    $(".siderbar_menu li").click(function(){
+      $(".siderbar_menu li").removeClass("active");
+      $(this).addClass("active");
+    });
+
+    $(".hamburger").click(function(){
+      $(".wrapper").addClass("active");
+    });
+
+    $(".close, .bg_shadow").click(function(){
+      $(".wrapper").removeClass("active");
+    });
+  });
+
+  
+</script>
+
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

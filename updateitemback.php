@@ -16,7 +16,7 @@ include'asset/connection.php';
        $units = $_POST['units'];
 
 
-    $sql1 = "UPDATE item  SET sr_number ='$srnum', category='$category', brand='$brand', quantity='$quantity', amount='$amount', units='$units', status= '$status', action='$action', description= '$description', modefied_date = CURRENT_TIMESTAMP    WHERE item_id='$item_id'";
+    $sql1 = "UPDATE item  SET sr_number ='$srnum', category='$category', brand='$brand', quantity='$quantity', amount='$amount', units='$units', status= '$status', action='$action', description= '$description', modified_date = CURRENT_TIMESTAMP    WHERE item_id='$item_id'";
           
         $result = mysqli_query($conn,$sql1);
         // echo mysqli_error($conn);

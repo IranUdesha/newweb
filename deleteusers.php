@@ -1,5 +1,6 @@
 
 <?php
+session_start();   
     require 'asset/connection.php';
 
    $query = "SELECT * FROM login where user_type = 'User'";

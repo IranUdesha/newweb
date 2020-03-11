@@ -33,9 +33,12 @@ session_start();
 
                }elseif($hashedpass == true){
                     $_SESSION['username'] = $username;
+                    $_SESSION['fname'] = $row['fname'];
+                    $_SESSION['lname'] = $row['lname'];
                     $_SESSION['password'] = $password;
                     $_SESSION['email'] = $row['email'];
                     $_SESSION['user_type'] = $row['user_type'];
+                    $_SESSION['u_id']=$row['u_id'];
 
                     header("Location:index.php ");
                     
@@ -47,7 +50,7 @@ session_start();
 
 
     }else{
-        // header("Location:");
+        header("Location:login.php");
         exit();
     }
 

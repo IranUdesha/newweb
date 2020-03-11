@@ -1,6 +1,3 @@
-<?php
-session_start();   
-?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -27,8 +24,8 @@ session_start();
      <!-- Navigation bar & Headder -->
      <?php include 'asset/navbar.html';?>
     
-     <div class="main_container"> 
-         <!-- User Registration Form -->
+ <div class="main_container"> 
+         <!-- Edit Profile-->
     <div class="container" style="width: 100%;">
       <div class=" row  justify-content-center">
         <div class=" col-sm-6 col-md-8 ">
@@ -68,17 +65,9 @@ session_start();
                   <label for="validationDefault03">E-mail</label>
                   <input type="email" class="form-control" id="validationDefault03" name="email" required>
                 </div>
-                <div class="col-md-4 mb-6">
-                  <label for="validationDefault04">Account Type</label>
-                  <select class="custom-select" id="account_type" name="accounttype" required>
-                    <option selected disabled value=""></option>
-                    <option>User</option>
-                    <option>Admin</option>
-                  </select>
-                </div>
-                
+                               
               </div>         
-              <button class="btn btn-primary " style="margin-top: 10px;" type="submit" name="adduser">Add User</button>
+              <button class="btn btn-primary " style="margin-top: 10px;" type="submit" name="adduser">Update</button>
             </form>
           </div>
          

@@ -1,6 +1,16 @@
 <?php
-session_start();   
+session_start();    
+if(!isset($_SESSION)){
+    exit();
+}
+$fname = $_SESSION['fname'];
+$lname = $_SESSION['lname'];
+$username = $_SESSION['username'];
+$email = $_SESSION['email'];
+
 ?>
+
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -21,28 +31,28 @@ session_start();
     <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 	
-    <title>Add User</title>
+    <title>Edit Profile</title>
   </head>
   <body>
      <!-- Navigation bar & Headder -->
      <?php include 'asset/navbar.html';?>
     
-     <div class="main_container"> 
-         <!-- User Registration Form -->
+ <div class="main_container"> 
+         <!-- Edit Profile-->
     <div class="container" style="width: 100%;">
       <div class=" row  justify-content-center">
         <div class=" col-sm-6 col-md-8 ">
           <div class="item" >
             <label class="lbl1">User Registration Form</label>
-            <form action="adduserback.php" method="POST" >
+            <form action="editpback.php" method="POST" >
               <div class="row">
                 <div class="col-md-6 mb-3">
                   <label for="validationDefault01">First name</label>
-                  <input type="text" class="form-control" id="validationDefault01" name="fname"  required>
+                  <input type="text" class="form-control" id="validationDefault01" name="fname" value="<?php echo $fname ?>" required>
                 </div>
                 <div class="col-md-6 mb-3">
                   <label for="validationDefault02">Last name</label>
-                  <input type="text" class="form-control" id="validationDefault02" name="lname"  required>
+                  <input type="text" class="form-control" id="validationDefault02" name="lname" value="<?php echo $lname ?>" required>
                 </div>
                 
               </div>
@@ -53,32 +63,36 @@ session_start();
                     <div class="input-group-prepend">
                       <!-- <span class="input-group-text" id="inputGroupPrepend2">@</span> -->
                     </div>
-                    <input type="text" class="form-control" id="validationDefaultUsername" name="username" title="Use Simple Letters" aria-describedby="inputGroupPrepend2" required>
+                    <input type="text" class="form-control" id="validationDefaultUsername" name="username" title="Use Simple Letters" aria-describedby="inputGroupPrepend2" value="<?php echo $username ?>" required>
                   </div>
                 </div>
               </div>
               <div class="row">
                 <div class="form-group col-md-12">
-                  <label for="inputPassword4">Password</label>
+                  <label for="inputPassword4">Current Password</label>
                   <input type="password" class="form-control" id="inputPassword4" name="password">
+                </div>
+              </div>
+              <div class="row">
+                <div class="form-group col-md-12">
+                  <label for="inputPassword4">New Password</label>
+                  <input type="password" class="form-control" id="inputPassword4" name="npassword">
+                </div>
+              </div>
+              <div class="row">
+                <div class="form-group col-md-12">
+                  <label for="inputPassword4">Confirm Password</label>
+                  <input type="password" class="form-control" id="inputPassword4" name="cpassword">
                 </div>
               </div>
               <div class="form-row">
                 <div class="col-md-8 mb-6">
                   <label for="validationDefault03">E-mail</label>
-                  <input type="email" class="form-control" id="validationDefault03" name="email" required>
+                  <input type="email" class="form-control" id="validationDefault03" name="email" value="<?php echo $email ?>" required>
                 </div>
-                <div class="col-md-4 mb-6">
-                  <label for="validationDefault04">Account Type</label>
-                  <select class="custom-select" id="account_type" name="accounttype" required>
-                    <option selected disabled value=""></option>
-                    <option>User</option>
-                    <option>Admin</option>
-                  </select>
-                </div>
-                
+                               
               </div>         
-              <button class="btn btn-primary " style="margin-top: 10px;" type="submit" name="adduser">Add User</button>
+              <button class="btn btn-primary " style="margin-top: 10px;" type="submit" name="update">Update</button>
             </form>
           </div>
          

@@ -1,4 +1,5 @@
 <?php
+session_start();   
     require 'asset/connection.php';
 
     $selectCategories = " SELECT DISTINCT `category` FROM `category`";

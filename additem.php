@@ -1,4 +1,5 @@
 <?php
+session_start();   
     require 'asset/connection.php';
 
     $selectCategories = " SELECT DISTINCT `category` FROM `category`";
@@ -39,7 +40,7 @@
     <?php include 'asset/navbar.html';?>
 <div class="main_container"> 
     <!-- Add Item -->
-    <div class="container bg " style="width: 80%;">
+    <div class="container " style="width: 100%;">
       <div class="row justify-content-center ">
         <div class=" col-sm-6 col-md-8">
           

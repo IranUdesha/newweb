@@ -1,6 +1,6 @@
 <?php
-
-include'asset/connection.php';
+    session_start();   
+    include'asset/connection.php';
     if(isset($_POST['adduser'])){
         //get input from front end
         $fname = $_POST['fname'];

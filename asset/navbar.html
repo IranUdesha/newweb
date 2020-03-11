@@ -1,19 +1,4 @@
-<script>
-  $(document).ready(function(){
-    $(".siderbar_menu li").click(function(){
-      $(".siderbar_menu li").removeClass("active");
-      $(this).addClass("active");
-    });
 
-    $(".hamburger").click(function(){
-      $(".wrapper").addClass("active");
-    });
-
-    $(".close, .bg_shadow").click(function(){
-      $(".wrapper").removeClass("active");
-    });
-  });
-</script>
 <div class="wrapper">      
     <div class="sidebar" >
       <div class="bg_shadow"></div>
@@ -31,7 +16,7 @@
                   <span><i class="fas fa-map-marker-alt"></i> Colombo</span>
               </div>
           </div>
-          <!-- <label class="lbl3">Dashboard</label> -->
+          
           <ul class="siderbar_menu">
               <li class="active"><a href="index.php">
                 <div class="icon"><i class="fas fa-home"></i></div>
@@ -59,8 +44,11 @@
             <div class="title">Delete User</div>
             </a>
           </li> 
-          <li><a href="#">
-            <div class="icon" style="margin-bottom:0px ;"><i class="fas fa-users-cog"></i></div>
+          <li><a href="editprofile.php">
+            <div class="icon" style="margin-bottom:0px ;"><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+              width="24" height="24"
+              viewBox="0 0 172 172"
+              style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#ecf0f1"><path d="M69.28711,14.33333l-3.52734,18.08464c-5.8821,2.22427 -11.32102,5.33176 -16.097,9.25228l-17.37077,-5.99089l-16.71289,28.97461l13.89941,12.07975c-0.49282,3.02401 -0.81185,6.10305 -0.81185,9.26628c0,3.16323 0.31903,6.24227 0.81185,9.26628l-13.89941,12.07975l16.71289,28.9746l17.37077,-5.99088c4.77599,3.92052 10.2149,7.02801 16.097,9.25227l3.52734,18.08464h33.42578l3.52735,-18.08464c5.88211,-2.22427 11.32102,-5.33176 16.097,-9.25227l17.37077,5.99088l16.71289,-28.9746l-13.89941,-12.07975c0.49282,-3.02401 0.81185,-6.10305 0.81185,-9.26628c0,-3.16323 -0.31902,-6.24227 -0.81185,-9.26628l13.89941,-12.07975l-16.71289,-28.97461l-17.37077,5.99089c-4.77598,-3.92052 -10.21489,-7.02801 -16.097,-9.25228l-3.52735,-18.08464zM86,57.33333c15.83117,0 28.66667,12.8355 28.66667,28.66667c0,15.83117 -12.8355,28.66667 -28.66667,28.66667c-15.83117,0 -28.66667,-12.8355 -28.66667,-28.66667c0,-15.83117 12.8355,-28.66667 28.66667,-28.66667z"></path></g></g></svg></div>
             <div class="title">Edit Profile</div>
             </a>
         </li>   
@@ -77,8 +65,19 @@
          <div class="hamburger">
            <i class="fas fa-bars"></i>
          </div>
-         <div class="logo"><i class="fa fa-user" aria-hidden="true"></i>
-           <a href="#">username</a>
+         <div class="logo">
+           <div class="row" >
+              <div class="col ">
+                <img src="https://img.icons8.com/metro/26/000000/administrator-male.png">
+              </div>
+              <div class="col" style="line-height: 80%;">
+                <h6 style="margin: 0em;padding: 0em; "> <?php echo $_SESSION['fname'] ?></h6>
+                 <p style="margin: 0em;padding: 0em;"> <?php echo $_SESSION['username'] ?> </p>
+             
+              </div>
+           
+           </div>
+           
         </div>
       </div>        
     </div>
