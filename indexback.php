@@ -1,5 +1,5 @@
 <?php
-
+ 
 $selectCategories = " SELECT DISTINCT `category` FROM `category`"; // get category for dropdown menu
 $CategoriesResult = mysqli_query($conn,$selectCategories);
 
@@ -32,12 +32,21 @@ if(isset($_POST['search']))
         }
         else
         {
-        $selectItemData = " SELECT * FROM `item` WHERE  category LIKE '%$scategory%' AND status LIKE '$sstatus%' AND action LIKE '$saction%' AND date BETWEEN '$sfromDate' AND '$stoDate' ";
-        $selectItemDataResult = mysqli_query($conn,$selectItemData);
-        $CurrentRowCount = mysqli_num_rows($selectItemDataResult);
-
-        $FilterDate = "/ From : ".$sfromDate." To : ".$stoDate;
-        $FullItem = "";
+            if($sfromDate >= $stoDate)
+            {
+                echo "<script type='text/javascript'> alert('From date is higher than to date or both dates are equal'); window.location.href='index.php';</script>";
+            }
+            else
+            {
+                $selectItemData = " SELECT * FROM `item` WHERE  category LIKE '%$scategory%' AND status LIKE '$sstatus%' AND action LIKE '$saction%' AND date BETWEEN '$sfromDate' AND '$stoDate' ";
+                $selectItemDataResult = mysqli_query($conn,$selectItemData);
+                $CurrentRowCount = mysqli_num_rows($selectItemDataResult);
+        
+                $FilterDate = "/ From : ".$sfromDate." To : ".$stoDate;
+                $FullItem = "";
+            }  
+            
+       
         }
     }
     
@@ -60,7 +69,4 @@ else
     $saction = "";
     $FilterDate = "";
 }
-
-
-
 ?>

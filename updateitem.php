@@ -1,5 +1,9 @@
 <?php
-session_start();   
+session_start();
+if(!isset($_SESSION['username'])){
+  header("Location: login.php");
+  exit();
+}  
     require 'asset/connection.php';
     $selectCategories = " SELECT DISTINCT `category` FROM `category`";
     $selectunits = " SELECT DISTINCT `unit` FROM `units`";

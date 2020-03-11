@@ -29,6 +29,15 @@
         header("Location:adduser.php");
         exit();
     }
+    //here query check weather if user already registered so can't register again.  
+//     $check_email_query="select * from users WHERE user_email='$user_email'";  
+//     $run_query=mysqli_query($dbcon,$check_email_query);  
+  
+//     if(mysqli_num_rows($run_query)>0)  
+//     {  
+// echo "<script>alert('Email $user_email is already exist in our database, Please try another one!')</script>";  
+// exit();  
+//     }
 
 
 ?>

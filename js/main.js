@@ -10,4 +10,4 @@ $(".siderbar_menu li").click(function(){
   $(".close, .bg_shadow").click(function(){
     $(".wrapper").removeClass("active");
   });
-  
+

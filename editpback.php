@@ -45,7 +45,7 @@ session_start();
         }else{
            //The Current password You Entered is Incorrect...!
             echo '<script type="text/javascript">';
-            echo ' alert("Current password You Entered is Incorrect...!"); window.location.href = "editprofile.php";';  //showing an alert box and redirect to additem.php
+            echo ' alert("Current password Incorrect...!"); window.location.href = "editprofile.php";';  //showing an alert box and redirect to additem.php
             echo '</script>';
         }
 

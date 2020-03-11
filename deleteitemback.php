@@ -1,9 +1,12 @@
+
+
 <?php
     require 'asset/connection.php';
 
     $itemid = $_GET['itemid'];
     
     $deleteItem = " DELETE FROM `item` WHERE item_id = '$itemid' ";
+    
 
     $deleteItemResult = mysqli_query($conn,$deleteItem);
 

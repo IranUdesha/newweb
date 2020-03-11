@@ -1,4 +1,5 @@
 <?php
+session_start();   
 
 include'asset/connection.php';
     if(isset($_POST['additem'])){

@@ -1,6 +1,10 @@
 
 <?php
-session_start();   
+session_start();
+if(!isset($_SESSION['username'])){
+  header("Location: login.php");
+  exit();
+}
     require 'asset/connection.php';
 
    $query = "SELECT * FROM login where user_type = 'User'";

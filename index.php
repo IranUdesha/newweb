@@ -1,11 +1,14 @@
 <?php
-session_start();
 
+    session_start();
+if(!isset($_SESSION['username'])){
+  header("Location: login.php");
+  exit();
+}
     require 'asset/connection.php';
     require 'indexback.php';
   //  $query = "SELECT * FROM item";
   //  $result = mysqli_query($conn,$query);
-
    
 ?>
 <!doctype html>
@@ -23,6 +26,7 @@ session_start();
     <link rel="stylesheet" type="text/css" href="css/login.css">
     <link href="css/util.css" rel="stylesheet">
     <link  rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style> 
     
      .table.sticky th{  
@@ -36,17 +40,25 @@ session_start();
   
     
     <!-- <script src="js/main.js"></script> -->
+    <script src="js\main.js"></script>
     <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+   
 
     <title>Home</title>
   </head>
   <body>
     <!-- Navigation bar & Headder -->
-   <?php include 'asset/navbar.html';?>
+   <?php 
+   if($_SESSION['user_type'] == 'Admin'){
+    include 'asset/navbar.html';
+   }else{
+     include 'asset/navbaruser.html';
+   }
+   ?>
    
 <div class="main_container"> 
    
@@ -141,26 +153,30 @@ session_start();
       <!-- <span class="table-add float-right mb-3 mr-2"><a href="additem.php" class="text-success">
         <i  class="fas fa-plus fa-2x" aria-hidden="true"></i></a></span> -->
 
-      <table class="table sticky table-bordered table-responsive-md table-striped text-center"  >
-        <thead >
-          <tr >
-            <th class="text-center">Item Id</th>
-            <th class="text-center">SR Number</th>
-            <th class="text-center">Category</th>
-            <th class="text-center">Brand</th>
-            <th class="text-center">Quantity</th>
-            <th class="text-center">Amount</th>
-            <th class="text-center">units</th>
-            <th class="text-center">Status</th>
-            <th class="text-center">Action</th>
-            <th class="text-center">Description</th>
-            <th class="text-center">Added Date</th>
-            <th class="text-center">Modified Date</th>
-            <th class="text-center">Delete</th>
-            <th class="text-center">Update</th>
-          </tr>
-          <?php
-          //fetch data from database
+         <table class="table sticky table-bordered table-responsive-md table-striped text-center"  >
+           <thead >
+               <tr >
+                  <th class="text-center">Item Id</th>
+                  <th class="text-center">SR Number</th>
+                  <th class="text-center">Category</th>
+                  <th class="text-center">Brand</th>
+                  <th class="text-center">Quantity</th>
+                  <th class="text-center">Amount</th>
+                  <th class="text-center">units</th>
+                  <th class="text-center">Status</th>
+                  <th class="text-center">Action</th>
+                  <th class="text-center">Description</th>
+                  <th class="text-center">Added Date</th>
+                  <th class="text-center">Modified Date</th>
+                  <?php 
+                     if($_SESSION['user_type'] == 'Admin'){
+                     include 'asset/editremoveheader.html';
+                     }
+                  ?>
+                  
+              </tr>
+                  <?php
+                        //fetch data from database
                     while($row = mysqli_fetch_assoc($selectItemDataResult))
                     {
                         $item_id = $row['item_id'];
@@ -175,8 +191,8 @@ session_start();
                         $description = $row['description'];
                         $date = $row['date'];
                         $modified_date = $row['modified_date'];
-                ?>
-        </thead>
+                 ?>
+          </thead>
         <tbody id="datatable" aria-hidden="true">
           <tr>
             <!-- assign retrive values to the columns -->
@@ -193,16 +209,12 @@ session_start();
             <td class="pt-3-half" contenteditable="true"><?php echo  $date ?></td>
             <td class="pt-3-half" contenteditable="true"><?php echo  $modified_date ?></td>
             
-            <td>
-              <span class="table-remove">
-                <a class="btn btn-danger btn-rounded btn-sm my-0"  href="deleteitemback.php?itemid=<?php echo $item_id ?>">Remove</a>
-              </span>
-            </td>
-            <td>
-              <span class="table-remove">
-                <a type="button" class="btn btn-primary btn-rounded my-0" href="updateitem.php?itemid=<?php echo $item_id ?>">Edit</a
-                ></span>
-            </td>
+            <?php 
+              if($_SESSION['user_type'] == 'Admin'){
+               include 'asset/editremove.html';
+              }
+            ?>
+        
           </tr>
            <?php
                 }

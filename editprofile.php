@@ -1,7 +1,8 @@
-<?php
-session_start();    
-if(!isset($_SESSION)){
-    exit();
+<?php   
+session_start();
+if(!isset($_SESSION['username'])){
+  header("Location: login.php");
+  exit();
 }
 $fname = $_SESSION['fname'];
 $lname = $_SESSION['lname'];
@@ -9,8 +10,6 @@ $username = $_SESSION['username'];
 $email = $_SESSION['email'];
 
 ?>
-
-
 <!doctype html>
 <html lang="en">
   <head>
@@ -34,8 +33,15 @@ $email = $_SESSION['email'];
     <title>Edit Profile</title>
   </head>
   <body>
-     <!-- Navigation bar & Headder -->
-     <?php include 'asset/navbar.html';?>
+    <!-- Navigation bar & Headder -->
+   <?php 
+   if($_SESSION['user_type'] == 'Admin'){
+    include 'asset/navbar.html';
+   }else{
+     include 'asset/navbaruser.html';
+   }
+   ?>
+   
     
  <div class="main_container"> 
          <!-- Edit Profile-->
@@ -70,19 +76,19 @@ $email = $_SESSION['email'];
               <div class="row">
                 <div class="form-group col-md-12">
                   <label for="inputPassword4">Current Password</label>
-                  <input type="password" class="form-control" id="inputPassword4" name="password">
+                  <input type="password" class="form-control" id="inputPassword4" name="password" required>
                 </div>
               </div>
               <div class="row">
                 <div class="form-group col-md-12">
                   <label for="inputPassword4">New Password</label>
-                  <input type="password" class="form-control" id="inputPassword4" name="npassword">
+                  <input type="password" class="form-control" id="inputPassword4" name="npassword" required>
                 </div>
               </div>
               <div class="row">
                 <div class="form-group col-md-12">
                   <label for="inputPassword4">Confirm Password</label>
-                  <input type="password" class="form-control" id="inputPassword4" name="cpassword">
+                  <input type="password" class="form-control" id="inputPassword4" name="cpassword" required>
                 </div>
               </div>
               <div class="form-row">

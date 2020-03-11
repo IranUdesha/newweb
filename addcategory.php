@@ -1,5 +1,9 @@
-<?php
-session_start();   
+<?php  
+session_start();
+if(!isset($_SESSION['username'])){
+  header("Location: login.php");
+  exit();
+}
     require 'asset/connection.php';
 
     $selectCategories = " SELECT DISTINCT `category` FROM `category`";
@@ -51,8 +55,15 @@ session_start();
     <title>Categary</title>
   </head>
   <body>
-     <!-- Navigation bar & Headder -->
-     <?php include 'asset/navbar.html';?>
+      <!-- Navigation bar & Headder -->
+      <?php 
+   if($_SESSION['user_type'] == 'Admin'){
+    include 'asset/navbar.html';
+   }else{
+     include 'asset/navbaruser.html';
+   }
+   ?>
+   
     
     
         <!-- Show available Categories -->

@@ -1,0 +1,25 @@
+<script>
+      function confirmdelete(){
+    
+
+  var x = confirm("Are you sure you want to delete?");
+  if (x){
+      return true;
+    // window.location.href = "";
+  }else{
+    return false;
+  }
+}
+  
+</script>
+<td>
+    <span class="table-remove">
+
+      <a class="btn btn-danger btn-rounded btn-sm my-0" onclick="return confirmdelete()"  href="deleteitemback.php?itemid=<?php echo $item_id ?>">Remove</a>
+    </span>
+  </td>
+  <td>
+    <span class="table-remove">
+      <a type="button" class="btn btn-primary btn-rounded my-0" href="updateitem.php?itemid=<?php echo $item_id ?>">Edit</a
+      ></span>
+  </td>

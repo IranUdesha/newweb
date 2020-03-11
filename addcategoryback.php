@@ -1,5 +1,5 @@
 <?php
-
+session_start();   
 include'asset/connection.php';
     // add Category part
     if(isset($_POST['addcat'])){
